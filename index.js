@@ -58,4 +58,33 @@ function game() {
     }
 }
 
-game();
+
+
+document.querySelector("#rock").addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    const result = playRound("rock", computerChoice);
+
+    console.log(result);
+    roundResult(result);
+});
+
+document.querySelector("#paper").addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    const result = playRound("paper", computerChoice);
+
+    console.log(result);
+    roundResult(result);
+});
+
+document.querySelector("#scissors").addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    const result = playRound("scissors", computerChoice);
+
+    console.log(result);
+    roundResult(result);
+});
+
+function roundResult(result) {
+    const resultDiv = document.querySelector("#result");
+    resultDiv.textContent = result;
+};
