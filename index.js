@@ -84,7 +84,33 @@ document.querySelector("#scissors").addEventListener("click", () => {
     roundResult(result);
 });
 
+let playerScore = 0;
+let computerScore = 0;
+
 function roundResult(result) {
     const resultDiv = document.querySelector("#result");
     resultDiv.textContent = result;
+
+    if (result.includes("win")) {
+        playerScore++;
+    } else if (result.includes("lose")) {
+        computerScore++;
+    }
+
+    const scoreDiv = document.querySelector("#score");
+    scoreDiv.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+
+    if (playerScore >= 5) {
+        scoreDiv.textContent = "Player wins the game!";
+    } else if (computerScore >= 5) {
+        scoreDiv.textContent = "Computer wins the game!";
+        disableButtons();
+    }
 };
+
+function disableButtons() {
+    document.querySelector("#rock").disabled = true;
+    document.querySelector("#paper").disabled = true;
+    document.querySelector("#scissors").disabled = true;
+}
+
